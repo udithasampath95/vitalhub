@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_small">3dp</dimen>
+    <dimen name="margin_xlarge">15dp</dimen>
+    <dimen name="buy_button_width">150dp</dimen>
+    <dimen name="buy_button_height">24sp</dimen>
+
+    <dimen name="toolbar_title_text_size">10sp</dimen>
+    <dimen name="button_text_sizes">7.5sp</dimen>
+
+    <dimen name="pading_ten">5dp</dimen>
+    <dimen name="marging_top_ten">5dp</dimen>
+    <dimen name="marging_top_twenty">10dp</dimen>
+    <dimen name="edit_text_view_size">22.5dp</dimen>
+    <dimen name="not_found_img_margin_top">60dp</dimen>
+    <dimen name="htp_img_w">75dp</dimen>
+    <dimen name="lable_text_view">7sp</dimen>
+    <dimen name="margin_top_five">2.5dp</dimen>
+</resources>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/mainLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/marging_top_ten"
+        android:layout_marginBottom="@dimen/marging_top_ten"
+        android:layout_marginRight="@dimen/marging_top_ten"
+        android:background="@drawable/candidate_item_bg"
+        android:orientation="vertical"
+        android:padding="@dimen/pading_ten">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="@dimen/htp_img_w"
+                    android:layout_height="@dimen/htp_img_w"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="2dp"
+                    android:adjustViewBounds="true"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/nameTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="left|center"
+                    android:maxLines="1"
+                    android:minLines="1"
+                    android:text=""
+                    android:textColor="@color/toolbar_title_color"
+                    android:textSize="@dimen/button_text_sizes"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_marginLeft="20dp"
+                    android:text=""
+                    android:id="@+id/ageTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_five"
+                    android:layout_weight="2"
+                    android:gravity="left|center"
+                    android:maxLines="1"
+                    android:minLines="1"
+                    android:textColor="@color/toolbar_title_color"
+                    android:textSize="@dimen/button_text_sizes"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

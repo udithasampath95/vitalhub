@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/two_tone_ice_blue"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/marging_top_twenty"
+        android:background="@color/two_tone_ice_blue"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marging_top_twenty"
+            android:layout_marginTop="@dimen/marging_top_ten"
+            android:layout_marginRight="@dimen/marging_top_twenty"
+            android:orientation="vertical"
+            android:padding="@dimen/pading_ten">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:gravity="left"
+                android:text="Name"
+                android:textColor="@color/toolbar_title_color"
+                android:textSize="@dimen/button_text_sizes"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/nameSearchView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_text_view_size"
+                android:layout_marginTop="@dimen/marging_top_ten"
+                android:layout_marginBottom="@dimen/marging_top_ten"
+                android:autofillHints="name"
+                android:background="@drawable/searchable_background"
+                android:textColor="#678BBA"
+                android:textSize="@dimen/button_text_sizes" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marging_top_ten"
+            android:nestedScrollingEnabled="true"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <include
+            layout="@layout/not_found_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+</LinearLayout>
