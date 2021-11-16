@@ -18,6 +18,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.vitalhubtest.R;
 import com.example.vitalhubtest.model.Results;
 import com.example.vitalhubtest.model.UserResponse;
+import com.example.vitalhubtest.utill.ApplicationSharedPreferences;
 import com.example.vitalhubtest.utill.ViewDetailsCallBack;
 
 import java.util.ArrayList;
@@ -47,11 +48,14 @@ public class SelectedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Results result=  userList.get(position);
+        ApplicationSharedPreferences sp=new ApplicationSharedPreferences(context);
+        ((TextViewHolder) holder).mainLinearLayout.setBackgroundResource(R.drawable.selected_candidate_bg);
         ((TextViewHolder) holder).nameTV.setText(result.getName().getFirst()+" "+result.getName().getLast());
         ((TextViewHolder) holder).ageTV.setText(String.valueOf(result.getDateOfBirth().getAge()));
         Glide.with(context)
                 .load(result.getPicture().getLarge())
-                .apply(RequestOptions.centerCropTransform())
+                .apply(RequestOptions.centerInsideTransform())
+                .skipMemoryCache(true)
                 .into(((TextViewHolder) holder).imageView);
         ((TextViewHolder) holder).bind(result, viewDetailsCallBack);
 

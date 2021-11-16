@@ -12,66 +12,47 @@
         android:layout_marginBottom="@dimen/marging_top_ten"
         android:layout_marginRight="@dimen/marging_top_ten"
         android:background="@drawable/candidate_item_bg"
-        android:orientation="vertical"
-        android:padding="@dimen/pading_ten">
-
-        <LinearLayout
+        android:orientation="vertical">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:orientation="vertical">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageView"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="15dp"
+                android:src="@drawable/ic_launcher_background" />
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="@dimen/htp_img_w"
-                    android:layout_height="@dimen/htp_img_w"
-                    android:layout_gravity="left"
-                    android:layout_marginLeft="2dp"
-                    android:adjustViewBounds="true"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
 
                 <TextView
-                    android:layout_marginLeft="20dp"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:id="@+id/nameTV"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:gravity="left|center"
-                    android:maxLines="1"
-                    android:minLines="1"
-                    android:text=""
-                    android:textColor="@color/toolbar_title_color"
-                    android:textSize="@dimen/button_text_sizes"
-                    android:textStyle="bold" />
+                    android:text="name"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
 
                 <TextView
-                    android:layout_marginLeft="20dp"
-                    android:text=""
+                    android:textColor="@color/black"
                     android:id="@+id/ageTV"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_top_five"
-                    android:layout_weight="2"
-                    android:gravity="left|center"
-                    android:maxLines="1"
-                    android:minLines="1"
-                    android:textColor="@color/toolbar_title_color"
-                    android:textSize="@dimen/button_text_sizes"
-                    android:textStyle="bold" />
+                    android:layout_below="@id/nameTV"
+                    android:text="age"
+                    android:textSize="20sp" />
 
-            </LinearLayout>
+            </RelativeLayout>
+
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

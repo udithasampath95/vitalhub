@@ -11,6 +11,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class ApplicationSharedPreferences {
     Context context;
@@ -45,7 +46,7 @@ public class ApplicationSharedPreferences {
 
     public ArrayList<Results> getUserList() {
         Gson gson = new Gson();
-        String json = sharedPreferences.getString("userResponses", null);
+        String json = sharedPreferences.getString("userResponse", null);
         Type type = new TypeToken<ArrayList<Results>>() {
         }.getType();
         return gson.fromJson(json, type);
@@ -66,5 +67,4 @@ public class ApplicationSharedPreferences {
         }.getType();
         return gson.fromJson(json, type);
     }
-
 }

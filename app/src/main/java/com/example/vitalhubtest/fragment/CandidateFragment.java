@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +38,6 @@ public class CandidateFragment extends Fragment implements SearchView.OnQueryTex
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.candidate_fragment_layout, container, false);
         initViews(view);
-
         rootResponse = new ArrayList<>();
         rootResponse = (ArrayList<Results>) getArguments().getSerializable("candidates");
         return view;
@@ -59,9 +59,7 @@ public class CandidateFragment extends Fragment implements SearchView.OnQueryTex
         listView = view.findViewById(R.id.listView);
         notFoundLinearLayout = view.findViewById(R.id.notFoundLinearLayout);
         notFoundTextView = view.findViewById(R.id.notFoundTextView);
-
         nameSearchView.setOnQueryTextListener(this);
-        
     }
 
     @Override
@@ -77,7 +75,7 @@ public class CandidateFragment extends Fragment implements SearchView.OnQueryTex
     @Override
     public boolean onQueryTextChange(String newText) {
         if (candidatesRecycleViewAdapter == null) {
-            System.out.println("No filters");
+            Log.i("CandidateFragment ","Filter null")  ;
         } else {
             candidatesRecycleViewAdapter.filter(newText);
         }

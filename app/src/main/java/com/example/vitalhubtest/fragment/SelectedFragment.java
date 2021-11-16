@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,15 +40,20 @@ public class SelectedFragment extends Fragment implements SearchView.OnQueryText
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.candidate_fragment_layout, container, false);
+        View view = inflater.inflate(R.layout.fragment_selected, container, false);
         initViews(view);
         rootResponse = new ArrayList<>();
         mapUser=new HashMap<>();
-        if(getArguments().getSerializable("candidates")!=null){
-            mapUser = (HashMap<String, Results>) getArguments().getSerializable("candidates");
+        if(getArguments().getSerializable("selected")!=null){
+            mapUser = (HashMap<String, Results>) getArguments().getSerializable("selected");
             if(mapUser!=null){
-                for (Map.Entry<String, Results> set : mapUser.entrySet()) {
-                    rootResponse.add(set.getValue());
+                if(mapUser.size()<=0){
+                    listView.setVisibility(View.GONE);
+                    notFoundLinearLayout.setVisibility(View.VISIBLE);
+                }else {
+                    for (Map.Entry<String, Results> set : mapUser.entrySet()) {
+                        rootResponse.add(set.getValue());
+                    }
                 }
             }else{
                 listView.setVisibility(View.GONE);
@@ -70,7 +76,7 @@ public class SelectedFragment extends Fragment implements SearchView.OnQueryText
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initRecyclerView();
-        System.out.println("AAA");
+
     }
 
     private void initViews(View view) {
@@ -101,7 +107,7 @@ public class SelectedFragment extends Fragment implements SearchView.OnQueryText
     @Override
     public boolean onQueryTextChange(String newText) {
         if (candidatesRecycleViewAdapter == null) {
-            System.out.println("No filters");
+            Log.i("SelectedFragment ","Filter null")  ;
         } else {
             candidatesRecycleViewAdapter.filter(newText);
         }
@@ -117,12 +123,17 @@ public class SelectedFragment extends Fragment implements SearchView.OnQueryText
         if(sp.getSelectedUserList()!=null){
             mapUser = sp.getSelectedUserList();
             if(mapUser!=null){
-                listView.setVisibility(View.VISIBLE);
-                notFoundLinearLayout.setVisibility(View.GONE);
-                for (Map.Entry<String, Results> set : mapUser.entrySet()) {
-                    rootResponse.add(set.getValue());
+                if(mapUser.size()<=0){
+                    listView.setVisibility(View.GONE);
+                    notFoundLinearLayout.setVisibility(View.VISIBLE);
+                }else {
+                    listView.setVisibility(View.VISIBLE);
+                    notFoundLinearLayout.setVisibility(View.GONE);
+                    for (Map.Entry<String, Results> set : mapUser.entrySet()) {
+                        rootResponse.add(set.getValue());
+                    }
+                    initRecyclerView();
                 }
-                initRecyclerView();
             }else{
 
                 listView.setVisibility(View.GONE);

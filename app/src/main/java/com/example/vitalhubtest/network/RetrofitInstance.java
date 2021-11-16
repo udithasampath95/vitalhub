@@ -13,10 +13,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitInstance {
     private static Retrofit retrofit;
     public static Retrofit getRetroClient() {
-        Gson gson = new GsonBuilder()
-                .setDateFormat("yyyy-MM-dd HH:mm:ss")
-                .setLenient()
-                .create();
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(new CustomeInterceptor())
                 .readTimeout(60, TimeUnit.SECONDS)
@@ -27,7 +23,7 @@ public class RetrofitInstance {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(Constants.BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .addConverterFactory(GsonConverterFactory.create())
                     .client(okHttpClient)
                     .build();
         }

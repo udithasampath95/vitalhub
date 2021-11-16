@@ -54,8 +54,7 @@ public class MainActivity extends AppCompatActivity implements ViewDetailsCallBa
     @Override
     protected void onStart() {
         super.onStart();
-        System.out.println("DDDD");
-
+        Log.i(TAG, "CALL_ON_START");
     }
 
 
@@ -73,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements ViewDetailsCallBa
         } else {
             Log.i(TAG, "OFFLINE");
             if (applicationSharedPreferences.getUserList() == null) {
-                Toast.makeText(this, "Device is offline!", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "App need one time connection!", Toast.LENGTH_LONG).show();
             } else {
                 Log.i(TAG, "GET_DATA_FROM_SHARED");
                 setUpViewPager(applicationSharedPreferences.getUserList());
@@ -102,7 +101,11 @@ public class MainActivity extends AppCompatActivity implements ViewDetailsCallBa
                             Log.i(TAG, "CALL_GET_USER_RESULT_ON_RESPONSE_VALUE" + response.body().toString());
                             UserResponse rootResponse = response.body();
                             ApplicationSharedPreferences sharedPreferences = new ApplicationSharedPreferences(MainActivity.this);
-                            sharedPreferences.setUserList(rootResponse.getUserList());
+                            ArrayList<Results> userResponsesTempArray=new ArrayList<>();
+                            for(int i=0;i<rootResponse.getUserList().size();i++){
+                                userResponsesTempArray.add(rootResponse.getUserList().get(i));
+                            }
+                            sharedPreferences.setUserList(userResponsesTempArray);
                             setUpViewPager(rootResponse.getUserList());
                         } else {
                             Log.i(TAG, "CALL_GET_USER_RESULT_ON_RESPONSE_BAD_REQUEST_" + response.code());

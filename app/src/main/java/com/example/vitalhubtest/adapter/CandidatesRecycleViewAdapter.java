@@ -23,6 +23,8 @@ import com.example.vitalhubtest.utill.ViewDetailsCallBack;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class CandidatesRecycleViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  {
     Context context;
     ArrayList<Results> arryList;
@@ -48,11 +50,13 @@ ViewDetailsCallBack viewDetailsCallBack;
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
       Results result=  userList.get(position);
         ((TextViewHolder) holder).nameTV.setText(result.getName().getFirst()+" "+result.getName().getLast());
-        ((TextViewHolder) holder).ageTV.setText(String.valueOf(result.getDateOfBirth().getAge()));
+        ((TextViewHolder) holder).ageTV.setText(String.valueOf(result.getDateOfBirth().getAge())+" Years");
         Glide.with(context)
                 .load(result.getPicture().getLarge())
-                .apply(RequestOptions.centerCropTransform())
-                .into(((TextViewHolder) holder).imageView);
+                .apply(RequestOptions.centerInsideTransform())
+                .skipMemoryCache(true)
+                .into(((TextViewHolder) holder).imageView)
+        ;
         ((TextViewHolder) holder).bind(result, viewDetailsCallBack);
 
     }
@@ -66,7 +70,7 @@ ViewDetailsCallBack viewDetailsCallBack;
         View view;
         TextView nameTV;
         TextView ageTV;
-        ImageView imageView;
+        CircleImageView imageView;
         LinearLayout mainLinearLayout;
 
         TextViewHolder(@NonNull View itemView) {
