@@ -43,15 +43,20 @@ android:orientation="vertical">
                 android:textColor="#678BBA"
                 android:textSize="@dimen/button_text_sizes" />
         </LinearLayout>
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marging_top_twenty"
+            android:orientation="vertical">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/marging_top_ten"
+            android:dividerHeight="1px"
             android:nestedScrollingEnabled="true"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"></androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
         <include
             layout="@layout/not_found_layout"
             android:layout_width="match_parent"

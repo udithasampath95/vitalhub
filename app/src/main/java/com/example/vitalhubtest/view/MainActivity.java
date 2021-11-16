@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements ViewDetailsCallBa
         Log.i(TAG, "CALL_GET_USER_RESULT");
         showProgress();
         APIService getNoticeDataService = RetrofitInstance.getRetroClient().create(APIService.class);
-        Call<UserResponse> getUsers = getNoticeDataService.getUserList(50);
+        Call<UserResponse> getUsers = getNoticeDataService.getUserListPagination(1,10,"abc");
         getUsers.enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {

@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/candidate_item_bg.xml" value="0.25833333333333336" />
         <entry key="app/src/main/res/drawable/searchable_background.xml" value="0.25833333333333336" />
         <entry key="app/src/main/res/drawable/select_candidate_bg.xml" value="0.25833333333333336" />
@@ -12,6 +13,7 @@
         <entry key="app/src/main/res/layout/candidate_fragment_layout.xml" value="0.1381340579710145" />
         <entry key="app/src/main/res/layout/content_candidate.xml" value="0.1381340579710145" />
         <entry key="app/src/main/res/layout/fragment_selected.xml" value="0.1381340579710145" />
+        <entry key="app/src/main/res/layout/progressbar.xml" value="0.1381340579710145" />
       </map>
     </option>
   </component>

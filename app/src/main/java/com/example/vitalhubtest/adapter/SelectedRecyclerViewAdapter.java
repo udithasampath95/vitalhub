@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -48,15 +49,26 @@ public class SelectedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Results result=  userList.get(position);
+        final int sdk = android.os.Build.VERSION.SDK_INT;
         ApplicationSharedPreferences sp=new ApplicationSharedPreferences(context);
-        ((TextViewHolder) holder).mainLinearLayout.setBackgroundResource(R.drawable.selected_candidate_bg);
+        if (sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+            ((TextViewHolder) holder).mainLinearLayout.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.selected_candidate_bg));
+        } else {
+            ((TextViewHolder) holder).mainLinearLayout.setBackground(ContextCompat.getDrawable(context, R.drawable.selected_candidate_bg));
+        }
         ((TextViewHolder) holder).nameTV.setText(result.getName().getFirst()+" "+result.getName().getLast());
-        ((TextViewHolder) holder).ageTV.setText(String.valueOf(result.getDateOfBirth().getAge()));
+        ((TextViewHolder) holder).ageTV.setText(String.valueOf(result.getDateOfBirth().getAge())+" years");
         Glide.with(context)
                 .load(result.getPicture().getLarge())
                 .apply(RequestOptions.centerInsideTransform())
                 .skipMemoryCache(true)
                 .into(((TextViewHolder) holder).imageView);
+        ((TextViewHolder) holder).mainLinearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewDetailsCallBack.viewDetails(result);
+            }
+        });
         ((TextViewHolder) holder).bind(result, viewDetailsCallBack);
 
     }
@@ -94,7 +106,8 @@ public class SelectedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
         userList.clear();
-        if (charText.length() == 0) {
+        if (charText.length() == 0||charText.length() == 1||charText.length() == 2
+        ||charText.length() == 3) {
             userList.addAll(arryList);
         } else {
             for (Results response : arryList) {
