@@ -29,7 +29,6 @@ import com.example.vitalhubtest.utill.ViewDetailsCallBack;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;

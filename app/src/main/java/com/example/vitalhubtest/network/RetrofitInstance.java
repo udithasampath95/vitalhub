@@ -12,6 +12,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitInstance {
     private static Retrofit retrofit;
+
+    private RetrofitInstance(){
+
+    }
     public static Retrofit getRetroClient() {
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(new CustomeInterceptor())

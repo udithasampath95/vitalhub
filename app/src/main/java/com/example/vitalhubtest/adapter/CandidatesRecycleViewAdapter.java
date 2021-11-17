@@ -60,8 +60,6 @@ public class CandidatesRecycleViewAdapter extends RecyclerView.Adapter<RecyclerV
             vh = new ProgressViewHolder(v);
         }
         return vh;
-//        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.content_candidate, viewGroup, false);
-//        return new TextViewHolder(view);
     }
 
     @Override
@@ -72,6 +70,7 @@ public class CandidatesRecycleViewAdapter extends RecyclerView.Adapter<RecyclerV
             ((TextViewHolder) holder).ageTV.setText(String.valueOf(result.getDateOfBirth().getAge()) + " years");
             Glide.with(context)
                     .load(result.getPicture().getLarge())
+                    .placeholder(R.drawable.place_holder)
                     .apply(RequestOptions.centerInsideTransform())
                     .skipMemoryCache(true)
                     .into(((TextViewHolder) holder).imageView)

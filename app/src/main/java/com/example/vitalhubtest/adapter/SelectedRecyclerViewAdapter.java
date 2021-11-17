@@ -4,8 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,14 +16,13 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.vitalhubtest.R;
 import com.example.vitalhubtest.model.Results;
-import com.example.vitalhubtest.model.UserResponse;
 import com.example.vitalhubtest.utill.ApplicationSharedPreferences;
 import com.example.vitalhubtest.utill.ViewDetailsCallBack;
 
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class SelectedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>  {
+public class SelectedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     Context context;
     ArrayList<Results> arryList;
     ArrayList<Results> userList;
@@ -60,6 +57,7 @@ public class SelectedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
         ((TextViewHolder) holder).ageTV.setText(String.valueOf(result.getDateOfBirth().getAge())+" years");
         Glide.with(context)
                 .load(result.getPicture().getLarge())
+                .placeholder(R.drawable.place_holder)
                 .apply(RequestOptions.centerInsideTransform())
                 .skipMemoryCache(true)
                 .into(((TextViewHolder) holder).imageView);
@@ -69,7 +67,9 @@ public class SelectedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
                 viewDetailsCallBack.viewDetails(result);
             }
         });
+
         ((TextViewHolder) holder).bind(result, viewDetailsCallBack);
+
 
     }
 
@@ -78,7 +78,7 @@ public class SelectedRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
         return userList.size();
     }
 
-    public static class TextViewHolder extends RecyclerView.ViewHolder {
+    public static class TextViewHolder extends RecyclerView.ViewHolder{
         View view;
         TextView nameTV;
         TextView ageTV;
